@@ -1,18 +1,32 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet } from 'react-native';
-import { View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, Platform, View } from 'react-native';
+
+import Button from "../components/Button";
 
 
 
-function WelcomeScreen(props) {
+
+export default function WelcomeScreen(props) {
     return (
         <ImageBackground 
+        blurRadius={Platform.OS === "android" ? 2 : 10}
         style={styles.background}
-        source={require("../assets/wood.jpg")}>
+        source={require("../assets/dryck.png")}
+        >
 
-        <Image style={styles.logo} source={require("../assets/canIcon.png")}></Image>    
-        <View style={styles.loginButton}></View>
-        <View style={styles.registerButton}></View>
+        <View style={styles.logoContainer}>
+        <Image style={styles.logo} source={require("../assets/coupon.png")}></Image>  
+        <Text style={styles.textStyle}>Welcome! Let's shop!</Text> 
+        </View>
+        
+        <View style={styles.buttonContainer}>
+            <Button 
+            title="Login"
+            color= "white"
+            onPress={() => props.navigation.navigate('Cupon')}
+            />
+            
+        </View>
         </ImageBackground>
     );
 }
@@ -24,24 +38,24 @@ const styles = StyleSheet.create({
         alignItems: "center", // justerar och centrerar allt innehåll på sidan 
 
     },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: "white",
-    }, 
-    registerButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: "grey",
+    buttonContainer: {
+        width: "100%",
+        padding: 15,
     },
     logo:{ 
-        width: 100,
-        height: 100,
+        width: 300,
+        height: 200,
+    }, 
+    logoContainer:{
         position: 'absolute', 
-        top: 70,
-
+        top: 90,
+        alignItems: "center", 
+    },
+    textStyle:{
+        fontSize: 18, 
+        fontWeight: "500", 
+        color: "white"
     }
     
 }); 
 
-export default WelcomeScreen;
