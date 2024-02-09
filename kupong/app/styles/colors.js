@@ -3,5 +3,8 @@ export default{
     purpleGray: '#474787',
     coolGray: '#AAABB8',
     lightGray: '#ECECEC',
-    black: '#000'
+    black: '#000', 
+    white: '#fff',
+    onyx: '#303633', 
+    darkPurple: '#2E0014', 
 }
