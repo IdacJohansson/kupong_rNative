@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.kupong.Model.Coupon;
+import com.example.kupong.Model.User;
 import com.example.kupong.Repository.CouponRepo;
+import com.example.kupong.Repository.UserRepo;
 
 @SpringBootApplication
 public class KupongApplication {
@@ -16,7 +18,7 @@ public class KupongApplication {
 	}
 
 	@Bean
-	public CommandLineRunner POJO(CouponRepo cupongRepo) {
+	public CommandLineRunner POJO(CouponRepo cupongRepo, UserRepo userRepo) {
 		return args -> {
 
 			Coupon c50 = new Coupon(50, true, "2026-02-05", "fifty");
@@ -26,6 +28,16 @@ public class KupongApplication {
 			cupongRepo.save(c50);
 			cupongRepo.save(c100);
 			cupongRepo.save(c200);
+
+
+			User u1 = new User("Ida", "Ida"); 
+			User u2 = new User("Ida", "Ida"); 
+			User u3 = new User("Ida", "Ida"); 
+
+			userRepo.save(u1);
+			userRepo.save(u2);
+			userRepo.save(u3);
+
 
 		};
 

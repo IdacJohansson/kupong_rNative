@@ -9,18 +9,24 @@ function CouponScreen(props) {
             <View style={styles.closeIcon}></View>
             <View style={styles.deleteIcon}></View>
             <Image resizeMode='contain' style={styles.image} source={require('../assets/50.png')}></Image>
+            <Image resizeMode='contain' style={styles.image} source={require('../assets/100.png')}></Image> 
+            <Image resizeMode='contain' style={styles.image} source={require('../assets/200.png')}></Image> 
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     image: {
-        width: "100%",
-        height: "100%",
+        width: "30%",
+        height: "30%",
     }, 
     container: {
         flex: 1,
         backgroundColor: colors.coolGray,
+        alignItems: "center",
+        justifyContent: "center",
+        
+    
     },
     closeIcon: {
         width: 50, 

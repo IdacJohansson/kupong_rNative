@@ -3,12 +3,12 @@ import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 import colors from '../styles/colors';
 
-const Button = ({title, onPress, color}) => {
+const Button = ({title, onPress}) => {
     return (
      
-        <TouchableOpacity style={[styles.button, {backgroundColor: colors[color]}]}
+        <TouchableOpacity style={styles.button}
         onPress={onPress}
-        activeOpacity={0.5}
+        activeOpacity={0.9}
         >
             <Text style={styles.text}>{title}</Text>
         </TouchableOpacity>
@@ -20,12 +20,13 @@ export default Button;
 
 const styles = StyleSheet.create({
     button:{
-        borderRadius: 25,
+        borderRadius: 10,
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: 10,
         width: "100%",
         marginVertical: 10,    
+        backgroundColor: colors.onyx,
     }, 
     text:{
         color: colors.white,
