@@ -13,7 +13,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Cupon" component={CouponScreen} />
+        <Stack.Screen name="CuponShop" component={CouponScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   ); 
