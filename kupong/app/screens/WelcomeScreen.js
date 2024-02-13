@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, Platform, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { Image, ImageBackground, Text, Platform, View, TextInput, KeyboardAvoidingView } from 'react-native';
 import { useState } from 'react';
 
 import { welcomeScreenStyle } from '../styles/styles';
@@ -35,6 +35,7 @@ import LoginButton from '../components/LoginButton/LoginButton';
             props.navigation.navigate('CuponShop')
         }
     }
+
     return (
         <ImageBackground 
         blurRadius={Platform.OS === "android" ? 2 : 10}
@@ -81,7 +82,7 @@ import LoginButton from '../components/LoginButton/LoginButton';
                 title="Login"
                 //onPress={() => props.navigation.navigate('Cupon')}
                 onPress={handleSubmit}
-                />
+                /> 
 
 
                 </View>
