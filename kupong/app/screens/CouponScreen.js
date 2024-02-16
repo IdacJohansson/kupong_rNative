@@ -1,49 +1,54 @@
-import React from 'react';
-import { Image, StyleSheet, View } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
+import axios from 'axios';
 
-import colors from '../styles/colors';
+import { couponScreenStyle } from '../styles/styles'; 
 
-function CouponScreen(props) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.closeIcon}></View>
-            <View style={styles.deleteIcon}></View>
-            <Image resizeMode='contain' style={styles.image} source={require('../assets/50.png')}></Image>
-            <Image resizeMode='contain' style={styles.image} source={require('../assets/100.png')}></Image> 
-            <Image resizeMode='contain' style={styles.image} source={require('../assets/200.png')}></Image> 
+
+const CouponScreen = ({ navigation }) => {
+
+    const [productData, setProductData] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://api.punkapi.com/v2/beers")
+            .then((response) => setProductData(response.data))
+            .catch((error) => console.error("Error:", error));
+    }, []);
+
+    const navigateToDetails = (id) => {
+        navigation.navigate('CuponDetails', { productId: id })
+    }
+
+    const renderItem = ({ item }) => (
+
+        <View>
+            <TouchableOpacity 
+            key={item.id} 
+            style={couponScreenStyle.container}
+            onPress={() => navigateToDetails(item.id)}>
+            <Text>{item.name}</Text>
+            <Image
+            style={couponScreenStyle.image}
+            source={{ uri: item.image_url }}
+            />
+            <TouchableOpacity 
+            style={couponScreenStyle.ChooseButton} 
+            onPress={() => navigateToDetails(item.id)}>
+             <Text style={couponScreenStyle.buttonText}>Coupon 50</Text>
+            </TouchableOpacity>
+            </TouchableOpacity>
         </View>
     );
-}
 
-const styles = StyleSheet.create({
-    image: {
-        width: "30%",
-        height: "30%",
-    }, 
-    container: {
-        flex: 1,
-        backgroundColor: colors.coolGray,
-        alignItems: "center",
-        justifyContent: "center",
+    return (
+        <View style={couponScreenStyle.screenStyle}>
+            <FlatList
+                data={productData}
+                renderItem={renderItem}
+                keyExtractor={(item) => item.id.toString()}
+                />
+        </View>
         
-    
-    },
-    closeIcon: {
-        width: 50, 
-        height: 50,
-        backgroundColor: colors.lightGray, 
-        position: "absolute", 
-        top: 40,
-        left: 30,
-    },
-    deleteIcon:{
-        width: 50, 
-        height: 50,
-        backgroundColor: colors.black, 
-        position: "absolute", 
-        top: 40,
-        right: 30,
-    }
-})
-
-export default CouponScreen; 
+    );
+}
+export default CouponScreen;

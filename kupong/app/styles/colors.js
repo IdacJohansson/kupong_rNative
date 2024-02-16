@@ -7,4 +7,5 @@ export default{
     white: '#fff',
     onyx: '#303633', 
     darkPurple: '#2E0014', 
+    lightBlue: '#71acf5',
 }
