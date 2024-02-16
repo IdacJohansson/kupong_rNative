@@ -5,9 +5,3 @@ create table cupong(
                      expirationDate VARCHAR(255),
                      couponName VARCHAR(255)
 );
-
-create table user(
-                     id int auto_increment,
-                     username int NOT NULL,
-                     password VARCHAR(255) NOT NULL,
-);

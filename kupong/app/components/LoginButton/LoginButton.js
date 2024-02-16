@@ -3,7 +3,6 @@ import { Text, TouchableOpacity } from 'react-native';
 import { loginButtonStyle } from './styles'; 
 
 
-
 const LoginButton = ({title, onPress}) => {
     return (
      
@@ -11,11 +10,10 @@ const LoginButton = ({title, onPress}) => {
         onPress={onPress}
         activeOpacity={0.9}
         >
-            <Text style={loginButtonStyle.text}>{title}</Text>
+        <Text style={loginButtonStyle.text}>{title}</Text>
         </TouchableOpacity>
     )
 }
-
 export default LoginButton;
 
 
